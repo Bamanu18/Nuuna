@@ -12,7 +12,7 @@
                 </ul>
             </div>
 
-            <div class="col-4">
+            <div class="col-6">
                 <h3>Hubungi Kami</h3>
                 <ul class="footer-kontak">
                     <b><i class="fas fa-store"></i> Toko Obat dan Kosmetik Nuuna </b>
@@ -23,7 +23,6 @@
                     <br /><i class="fas fa-user"></i> Guntur Kurniawan
                 </ul>
             </div>
-
         </div>
     </div>
 </footer>
