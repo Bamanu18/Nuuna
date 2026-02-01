@@ -72,6 +72,6 @@ while ($pecah = $ambil->fetch_assoc()) {
 
 <div class="card-footer text-left">
     <h6>Konfirmasi Pembayaran mu ? Click Whatsapp di bawah:</h6>
-    <a href="https://wa.me/+6281280374417"><i class="fab fa-whatsapp mt-2"
+    <a href="https://wa.me/+62895414564318"><i class="fab fa-whatsapp mt-2"
             style="font-size: 3rem; color: rgb(0, 168, 107);"></i></a>
 </div>
