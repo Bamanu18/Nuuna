@@ -1,21 +1,21 @@
 <?php
-    session_start();
-    include '../koneksi/koneksi.php';
+session_start();
+include '../koneksi/koneksi.php';
 
-    if(!isset($_SESSION['admin'])){
-        echo "<script>alert('anda harus login');</script>";
-        echo "<script>location='login.php';</script>";
-        exit();
-    }
+if (!isset($_SESSION['admin'])) {
+    echo "<script>alert('anda harus login');</script>";
+    echo "<script>location='login.php';</script>";
+    exit();
+}
 
-    //data pembayaran
-    $data_pem = array();
-    $item_pem=0;
-    $ambil = $koneksi->query("SELECT * FROM pembayaran LIMIT 5");
-    while ($pem = $ambil->fetch_assoc()) {
-        $data_pem[]=$pem;
-        $item_pem++;
-    }
+//data pembayaran
+$data_pem = array();
+$item_pem = 0;
+$ambil = $koneksi->query("SELECT * FROM pembayaran LIMIT 10");
+while ($pem = $ambil->fetch_assoc()) {
+    $data_pem[] = $pem;
+    $item_pem++;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Warung Sembako Kaka Heni</title>
+    <title>Toko Nuuna</title>
 
     <!-- Font Style-->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
 
     <!-- data table -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    
+
 
 </head>
 
@@ -55,7 +55,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-store-alt"></i>
                 </div>
-                <div class="sidebar-brand-text mx-2">Warung Sembako Kaka Heni</div>
+                <div class="sidebar-brand-text mx-2">Toko Nuuna</div>
             </a>
 
             <!-- Divider -->
@@ -70,7 +70,7 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=Kategori">
@@ -151,22 +151,26 @@
                                 </h6>
 
                                 <?php foreach ($data_pem as $key => $value): ?>
-                                <a class="dropdown-item d-flex align-items-center" href="index.php?halaman=detail_pembayaran&id=<?php echo $value['id_pembelian']; ?>">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
+                                    <a class="dropdown-item d-flex align-items-center"
+                                        href="index.php?halaman=detail_pembayaran&id=<?php echo $value['id_pembelian']; ?>">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-success">
+                                                <i class="fas fa-donate text-white"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500"><?php echo date("d F Y", strtotime($value['tanggal'])); ?></div>
-                                        Rp. <?php echo number_format($value['jumlah']); ?>
-                                        <br>
-                                        <?php echo $value['nama']; ?>
-                                    </div>
-                                </a>
+                                        <div>
+                                            <div class="small text-gray-500">
+                                                <?php echo date("d F Y", strtotime($value['tanggal'])); ?>
+                                            </div>
+                                            Rp. <?php echo number_format($value['jumlah']); ?>
+                                            <br>
+                                            <?php echo $value['nama']; ?>
+                                        </div>
+                                    </a>
                                 <?php endforeach ?>
 
-                                <a href="index.php?halaman=Pembelian" class="dropdown-item text-center small text-gray-500">
+                                <a href="index.php?halaman=Pembelian"
+                                    class="dropdown-item text-center small text-gray-500">
                                     Show All Data
                                 </a>
                             </div>
@@ -176,15 +180,16 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['admin']['nama_lengkap']; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="../assets/img/undraw_profile_3.svg">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['admin']['nama_lengkap']; ?></span>
+                                <img class="img-profile rounded-circle" src="../assets/img/undraw_profile_3.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.php?halaman=Logout" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="index.php?halaman=Logout" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -199,60 +204,56 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <?php
-                        //halaman kategori
-                        if(isset($_GET['halaman'])){
-                            if($_GET['halaman']=="Kategori"){
-                                include 'kategori.php';
-                            }else if($_GET['halaman']=="tambah_kategori"){
-                                include 'tambah/tambah_kategori.php';
-                            }elseif($_GET['halaman']=="edit_kategori"){
-                                include 'edit/edit_kategori.php';
-                            }elseif($_GET['halaman']== "hapus_kategori"){
-                                include 'hapus/hapus_kategori.php';
-                            }
-                            
-                            //halaman produk
-                            elseif($_GET['halaman']=="Produk"){
-                                include 'produk.php';
-                            }elseif($_GET['halaman']=="tambah_produk"){
-                                include 'tambah/tambah_produk.php';
-                            }elseif($_GET['halaman']=="detail_produk"){
-                                include 'detail/detail_produk.php';
-                            }elseif($_GET['halaman']=="hapus_foto"){
-                                include 'hapus/hapus_foto.php';
-                            }elseif($_GET['halaman']=="edit_produk"){
-                                include 'edit/edit_produk.php';
-                            }elseif($_GET['halaman']== "hapus_produk"){
-                                include 'hapus/hapus_produk.php';
-                            }
-                            
-                            //halaman pembelian
-                            elseif($_GET['halaman']=="Pembelian"){
-                                include 'pembelian.php';
-                            } else if($_GET['halaman']=="detail_pembelian") {
-                                include 'detail/detail_pembelian.php';
-                            } else if($_GET['halaman']=="detail_pembayaran") {
-                                include 'detail/detail_pembayaran.php';
-                            }
-                            elseif($_GET['halaman']=="laporan_pembelian")
-                            {
-                                include 'laporan_pembelian.php';
-                            }
+                    //halaman kategori
+                    if (isset($_GET['halaman'])) {
+                        if ($_GET['halaman'] == "Kategori") {
+                            include 'kategori.php';
+                        } else if ($_GET['halaman'] == "tambah_kategori") {
+                            include 'tambah/tambah_kategori.php';
+                        } elseif ($_GET['halaman'] == "edit_kategori") {
+                            include 'edit/edit_kategori.php';
+                        } elseif ($_GET['halaman'] == "hapus_kategori") {
+                            include 'hapus/hapus_kategori.php';
+                        }
 
-                            elseif($_GET['halaman']=="Logout"){
-                                include 'logout.php';
-                            }
-                            
-                            //halaman pelanggan
-                            elseif($_GET['halaman']=="Pelanggan"){
-                                include 'pelanggan.php';
-                            }elseif($_GET['halaman']== "hapus_pelanggan"){
-                                include 'hapus/hapus_pelanggan.php';
-                            }
-                            }else{
-                                include 'dashboard.php';
-                            }
-                        ?>
+                        //halaman produk
+                        elseif ($_GET['halaman'] == "Produk") {
+                            include 'produk.php';
+                        } elseif ($_GET['halaman'] == "tambah_produk") {
+                            include 'tambah/tambah_produk.php';
+                        } elseif ($_GET['halaman'] == "detail_produk") {
+                            include 'detail/detail_produk.php';
+                        } elseif ($_GET['halaman'] == "hapus_foto") {
+                            include 'hapus/hapus_foto.php';
+                        } elseif ($_GET['halaman'] == "edit_produk") {
+                            include 'edit/edit_produk.php';
+                        } elseif ($_GET['halaman'] == "hapus_produk") {
+                            include 'hapus/hapus_produk.php';
+                        }
+
+                        //halaman pembelian
+                        elseif ($_GET['halaman'] == "Pembelian") {
+                            include 'pembelian.php';
+                        } else if ($_GET['halaman'] == "detail_pembelian") {
+                            include 'detail/detail_pembelian.php';
+                        } else if ($_GET['halaman'] == "detail_pembayaran") {
+                            include 'detail/detail_pembayaran.php';
+                        } elseif ($_GET['halaman'] == "laporan_pembelian") {
+                            include 'laporan_pembelian.php';
+                        } elseif ($_GET['halaman'] == "Logout") {
+                            include 'logout.php';
+                        }
+
+                        //halaman pelanggan
+                        elseif ($_GET['halaman'] == "Pelanggan") {
+                            include 'pelanggan.php';
+                        } elseif ($_GET['halaman'] == "hapus_pelanggan") {
+                            include 'hapus/hapus_pelanggan.php';
+                        }
+                    } else {
+                        include 'dashboard.php';
+                    }
+                    ?>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -317,9 +318,9 @@
     <script src="../assets/js/demo/datatables-demo.js"></script>
 
     <script>
-        $(document).ready(function(){
-            $(".btn-tambah").on("click", function(){
-                $(".input-foto").append("<input type='file' name='foto' class='form-control'>");  
+        $(document).ready(function () {
+            $(".btn-tambah").on("click", function () {
+                $(".input-foto").append("<input type='file' name='foto' class='form-control'>");
             })
         })
     </script>

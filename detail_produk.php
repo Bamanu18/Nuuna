@@ -102,9 +102,8 @@ while ($pecah = $ambil->fetch_assoc()) {
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Stok :</label>
                                             <div class="col-sm-9">
-                                                <input type="text" name="id_produk" class="form-control"
+                                                <input type="hidden" name="id_produk" class="form-control"
                                                     value="<?php echo $produk['id_produk']; ?>">
                                             </div>
                                         </div>

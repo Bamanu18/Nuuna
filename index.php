@@ -89,12 +89,15 @@ while ($pecah = $ambil->fetch_assoc()) {
                     <br>
                     <h3>Nuuna</h3>
                     <p>
-                        Kami menjual aneka makanan seperti Seblak, Maklor, dan Indomie. Selain menyediakan makanan, kami
-                        juga menyediakan aneka minuman dingin dan hangat seperti Kopi, Tea Jus, Nutrisari, dan masih
-                        banyak yang lainnya!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eligendi soluta distinctio, dolore
+                        eius corporis sit possimus vitae quam laudantium ab suscipit officiis consequatur amet
+                        voluptatibus, blanditiis voluptatum. Iusto excepturi maiores nobis facere animi voluptatibus
+                        fugiat totam, cum ea suscipit tenetur provident eum qui aliquam rem autem odio optio
+                        necessitatibus?
                     </p>
                     <p>
-                        Kami berada di Saung Bawah Sutet Samping Kali - Jl. Kenari III, Pamulang Barat
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum omnis laborum consequatur
+                        incidunt aut repellendus.
                     </p>
                 </div>
             </div>

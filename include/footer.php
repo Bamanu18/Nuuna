@@ -13,14 +13,14 @@
             </div>
 
             <div class="col-4">
-            <h3>Hubungi Kami</h3>
+                <h3>Hubungi Kami</h3>
                 <ul class="footer-kontak">
-                    <b><i class="fas fa-store"></i> Warung Kaka Heni</b>
-                    <br /><i class="fas fa-city"></i> Banten
-                    <br /><i class="fas fa-map-marker-alt"></i> Pamulang Barat
-                    <br /><i class="fas fa-phone"></i> 0812-8037-4417
-                    <br /><i class="fas fa-envelope"></i> henicena1@gmail.com
-                    <br /><i class="fas fa-user"></i> Heni Aisyah Kurlillah
+                    <b><i class="fas fa-store"></i> Toko Obat dan Kosmetik Nuuna </b>
+                    <br /><i class="fas fa-city"></i> Jawa Barat
+                    <br /><i class="fas fa-map-marker-alt"></i> Sawangan Jati
+                    <br /><i class="fas fa-phone"></i> 0895414564318
+                    <br /><i class="fas fa-envelope"></i> gunturkurniawan092@gmail.com
+                    <br /><i class="fas fa-user"></i> Guntur Kurniawan
                 </ul>
             </div>
 
@@ -29,6 +29,6 @@
 </footer>
 
 <div class="created">
-    <p>Created By <a href="#"> Albani, Syifa & Bagas</a>. | &copy; 2024</p>
+    <p>Created By <a href="#"> Toko Obat dan Kosmetik Nuuna</a>. | &copy; 2026</p>
 
 </div>
